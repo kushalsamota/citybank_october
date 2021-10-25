@@ -1,0 +1,41 @@
+yum module install container-tools -y
+podman info
+podman version
+podman images
+podman pull quay.io/kushalsamota/centos
+podman images
+podman pull docker.io/mysql
+podman images
+podman pull docker.io/mysql:5.6
+podman images
+#note ---- if docker pull limit error you face move to next command.
+podman pull quay.io/kushalsamota/httpd
+podman inspect quay.io/kushalsamota/httpd ============ see the cmd and all other things
+podman inspect quay.io/kushalsamota/centos ============ see the cmd and all other things
+
+#task -- create a account on docker.io and verify it with email sent to registered email address.
+podman login docker.io
+#give docker.io username and password and you will see a login succeeded message.
+podman images
+podman tag <image id of centos>  docker.io/<yourdockerusername>/javagpg:v1
+podman push docker.io/<yourdockerusername>/javagpg:v1
+#go to docker.io and confirm whether the image has been uploaded or not.
+
+podman rmi <imageid of centos image>
+podman images
+podman system df
+podman pull quay.io/kushalsamota/httpd
+podman images
+podman save <imageid of httpd image> -o httpd.tar
+podman rmi quay.io/kushalsamota/httpd
+podman images ==== you wont see the image
+ls  === you will see a tar file
+podman load -i httpd.tar
+podman images === you will see a image with no name that is a dangling image
+podman tag <imageid of that image> httpd:latest
+podman images
+
+podman rmi $(podman images -a -q)
+podman images ==== if you still see some images than remove them with their name by using podman rmi <name of image>
+ls /var/lib/containers/storage/overlay  === this wil give you all the images in layer format. layer is a directory.
+done..!
