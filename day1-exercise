@@ -1,5 +1,8 @@
+## go to windows cloud lab provided to you
+## open powershell
 ## go to the linux system and make sure you are logged in as root.
-
+## command is ==== ssh -p 225 root@your_ip_as_per_excel
+give password
 
 yum module install container-tools -y
 podman info
